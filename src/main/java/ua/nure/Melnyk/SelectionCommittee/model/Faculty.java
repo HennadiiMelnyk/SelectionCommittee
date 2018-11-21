@@ -2,13 +2,17 @@ package ua.nure.Melnyk.SelectionCommittee.model;
 
 import java.io.Serializable;
 
+/**
+ * Faculty model
+ */
 public class Faculty implements Serializable {
 
     private int id;
     private String name;
     private int budgetquantity;
 
-    public Faculty(){}
+    public Faculty() {
+    }
 
     public Faculty(int id, String name, int budgetquantity, int totalamont) {
         this.id = id;

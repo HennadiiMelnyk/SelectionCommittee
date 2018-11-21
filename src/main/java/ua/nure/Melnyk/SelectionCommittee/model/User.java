@@ -1,4 +1,9 @@
 package ua.nure.Melnyk.SelectionCommittee.model;
 
-public class User {
+import java.io.Serializable;
+
+/**
+ * User Model
+ * */
+public class User implements Serializable{
 }
