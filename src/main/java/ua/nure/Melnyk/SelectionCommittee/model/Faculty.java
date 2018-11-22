@@ -1,6 +1,7 @@
 package ua.nure.Melnyk.SelectionCommittee.model;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Faculty model
@@ -56,4 +57,21 @@ public class Faculty implements Serializable {
     }
 
     private int totalamont;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Faculty faculty = (Faculty) o;
+        return id == faculty.id &&
+                budgetquantity == faculty.budgetquantity &&
+                totalamont == faculty.totalamont &&
+                Objects.equals(name, faculty.name);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(id, name, budgetquantity, totalamont);
+    }
 }
