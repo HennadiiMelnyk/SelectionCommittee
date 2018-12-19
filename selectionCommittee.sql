@@ -24,7 +24,7 @@ create table user(
 id INT NOT NULL PRIMARY KEY,
 name VARCHAR(30),
 surname VARCHAR(30),
-email VARCHAR(30),
+email VARCHAR(30) UNIQUE,
 isBlock VARCHAR(10),
 faculty_idfaculty INT,
 role_idrole INT,
@@ -71,19 +71,4 @@ CONSTRAINT fk_subjects_has_faculty_faculty1	FOREIGN KEY (faculty_idfaculty) REFE
     ON UPDATE CASCADE
 );
 
-/*CREATE TABLE IF NOT EXISTS `mydb`.`subjects_has_faculty` (
-  `subjects_idsubjects` INT NOT NULL,
-  `faculty_idfaculty` INT NOT NULL,
-  PRIMARY KEY (`subjects_idsubjects`, `faculty_idfaculty`),
-  INDEX `fk_subjects_has_faculty_faculty1_idx` (`faculty_idfaculty` ASC),
-  INDEX `fk_subjects_has_faculty_subjects1_idx` (`subjects_idsubjects` ASC),
-  CONSTRAINT `fk_subjects_has_faculty_subjects1`
-    FOREIGN KEY (`subjects_idsubjects`)
-    REFERENCES `mydb`.`subjects` (`idsubjects`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_subjects_has_faculty_faculty1`
-    FOREIGN KEY (`faculty_idfaculty`)
-    REFERENCES `mydb`.`faculty` (`idfaculty`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)*/
+

@@ -3,30 +3,34 @@ package ua.nure.Melnyk.SelectionCommittee.model;
 import java.io.Serializable;
 import java.util.Objects;
 
+
 /**
  * User Model
  */
 public class User implements Serializable {
+
+
+    private static final long serialVersionUID = -6292438996688634291L;
     private int id;
     private String name;
     private String surname;
     private String email;
+    private String password;
     private String isBlock;
     private int idFaculty;
-    private int roleIdRole;
-    private int regionIdRegion;
+    private Role roleID;
+    private Region regionID;
+
 
     public User() {
     }
 
-    public User(int id, String name, String surname, String email, String isBlock, int idFaculty, int roleIdRole) {
-        this.id = id;
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.isBlock = isBlock;
-        this.idFaculty = idFaculty;
-        this.roleIdRole = roleIdRole;
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public int getId() {
@@ -77,20 +81,20 @@ public class User implements Serializable {
         this.idFaculty = idFaculty;
     }
 
-    public int getRoleIdRole() {
-        return roleIdRole;
+    public Role getRoleID() {
+        return roleID;
     }
 
-    public void setRoleIdRole(int roleIdRole) {
-        this.roleIdRole = roleIdRole;
+    public void setRoleID(Role roleID) {
+        this.roleID = roleID;
     }
 
-    public int getRegionIdRegion() {
-        return regionIdRegion;
+    public Region getRegionID() {
+        return regionID;
     }
 
-    public void setRegionIdRegion(int regionIdRegion) {
-        this.regionIdRegion = regionIdRegion;
+    public void setRegionID(Region regionID) {
+        this.regionID = regionID;
     }
 
     @Override
@@ -100,17 +104,34 @@ public class User implements Serializable {
         User user = (User) o;
         return id == user.id &&
                 idFaculty == user.idFaculty &&
-                roleIdRole == user.roleIdRole &&
-                regionIdRegion == user.regionIdRegion &&
                 Objects.equals(name, user.name) &&
                 Objects.equals(surname, user.surname) &&
                 Objects.equals(email, user.email) &&
-                Objects.equals(isBlock, user.isBlock);
+                Objects.equals(password, user.password) &&
+                Objects.equals(isBlock, user.isBlock) &&
+                roleID == user.roleID &&
+                Objects.equals(regionID, user.regionID);
+    }
+
+    public User(int id, String name, String surname, String email, String password, String isBlock, int idFaculty, Role roleID, Region regionID) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.password = password;
+        this.isBlock = isBlock;
+        this.idFaculty = idFaculty;
+        this.roleID = roleID;
+        this.regionID = regionID;
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, name, surname, email, isBlock, idFaculty, roleIdRole, regionIdRegion);
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + id;
+        // result = prime * result + name;
+        return Objects.hash(id, name, surname, email, password, isBlock, idFaculty, roleID, regionID);
+        //return result;
     }
 }

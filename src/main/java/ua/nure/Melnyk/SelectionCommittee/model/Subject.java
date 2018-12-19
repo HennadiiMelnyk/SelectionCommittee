@@ -8,6 +8,7 @@ import java.util.Objects;
  */
 public class Subject implements Serializable{
 
+    private static final long serialVersionUID = 1211165686162630426L;
     private int id;
     private int ukranian;
     private int math;

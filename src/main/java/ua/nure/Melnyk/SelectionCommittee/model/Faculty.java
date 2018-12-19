@@ -8,6 +8,7 @@ import java.util.Objects;
  */
 public class Faculty implements Serializable {
 
+    private static final long serialVersionUID = 6336802155862641331L;
     private int id;
     private String name;
     private int budgetquantity;
