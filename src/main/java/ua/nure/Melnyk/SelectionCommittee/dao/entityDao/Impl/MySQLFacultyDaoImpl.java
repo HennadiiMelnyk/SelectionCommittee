@@ -4,7 +4,6 @@ import ua.nure.Melnyk.SelectionCommittee.dao.entityDao.FacultyDao;
 import ua.nure.Melnyk.SelectionCommittee.model.Faculty;
 
 import java.sql.SQLException;
-import java.util.List;
 
 public class MySQLFacultyDaoImpl implements FacultyDao {
     @Override
@@ -22,15 +21,6 @@ public class MySQLFacultyDaoImpl implements FacultyDao {
 
     }
 
-    @Override
-    public List<Faculty> sortFacultyByAsc(Faculty faculty) {
-        return null;
-    }
-
-    @Override
-    public List<Faculty> sortFacultyByDesc(Faculty faculty) {
-        return null;
-    }
 
     @Override
     public boolean create(Object o) throws SQLException {
