@@ -1,14 +1,16 @@
 package ua.nure.Melnyk.SelectionCommittee;
 
 import ua.nure.Melnyk.SelectionCommittee.controller.Command;
+import ua.nure.Melnyk.SelectionCommittee.controller.UserController;
 import ua.nure.Melnyk.SelectionCommittee.dao.entityDao.Impl.MySQLUserDaoImpl;
 import ua.nure.Melnyk.SelectionCommittee.service.Impl.UserServiceImpl;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 import java.util.Map;
 import java.util.TreeMap;
-
+@WebListener
 public class ApplicationContext  implements ServletContextListener{
 
     private UserServiceImpl userService;
@@ -22,6 +24,11 @@ public class ApplicationContext  implements ServletContextListener{
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
 
+    }
+
+    public static Map<String, Command> getCommands() {
+        commands.put("userService", new UserController());
+        return commands;
     }
 
     public UserServiceImpl getUserService() {

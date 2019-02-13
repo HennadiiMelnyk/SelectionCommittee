@@ -1,6 +1,8 @@
 package ua.nure.Melnyk.SelectionCommittee.controller;
 
 import org.apache.log4j.Logger;
+import ua.nure.Melnyk.SelectionCommittee.SqlQueryConst.Path;
+import ua.nure.Melnyk.SelectionCommittee.exceptions.CustomException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -49,29 +51,31 @@ public class Controller extends HttpServlet {
         // extract command name from the request
         String commandName = request.getParameter("command");
         LOG.trace("Request parameter: command --> " + commandName);
-/*
-        if ("init".equals(commandName)) {
+
+        /*if ("init".equals(commandName)) {
             request.getRequestDispatcher("login.jsp").forward(request, response);
         } else {
             // obtain command object by its name
             Command command = CommandContainer.get(commandName, request.getServletContext());
             LOG.trace("Obtained command --> " + command);
-
-            // execute command and get forward address
-            String forward = Path.PAGE_ERROR_PAGE;
-            try {
-                forward = command.execute(request, response);
-            } catch (CustomException ex) {
-                request.setAttribute("errorMessage", ex.getMessage());
-            }
-            LOG.trace("Forward address --> " + forward);
-
-            LOG.debug("Controller finished, now go to forward address --> " + forward);
-
-            // go to forward
-            request.getRequestDispatcher(forward).forward(request, response);
-        }
-    }
 */
+        Command command = CommandContainer.get(commandName, request.getServletContext());
+        // execute command and get forward address
+        String forward = Path.PAGE_ERROR_PAGE;
+        try {
+            forward = command.execute(request, response);
+        } catch (CustomException ex) {
+            request.setAttribute("errorMessage", ex.getMessage());
+        }
+        LOG.trace("Forward address --> " + forward);
+
+        LOG.debug("Controller finished, now go to forward address --> " + forward);
+
+        // go to forward
+        request.getRequestDispatcher(forward).forward(request, response);
     }
 }
+
+
+
+

@@ -29,6 +29,7 @@ public class MySQLUserDaoImpl implements UserDao {
 
     private ResultSet resultSet;
 
+
     @Override
     public void addUser(User user) {
 
@@ -160,7 +161,10 @@ public class MySQLUserDaoImpl implements UserDao {
             throw new DBException(Messages.LOG_ROLLBACK_EXCEPTION, e);
         }
     }
-
+    /**
+     * Closes a connection.
+     *
+     */
     private void close() throws DBException {
         if (resultSet != null) {
             try {
